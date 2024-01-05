@@ -8,6 +8,13 @@ CartOS - A Cart-Only eCommerce System build on NestJS and DryerJS
 
 An eCommerce System built for the Modern Dedicated Stack focused on delivering powerful and flexible checkout and order capabilities
 
+## Features
+* Flexible checkout flows
+* No-cart checkout
+* Promotions
+* Multiple fulfuillment types
+* Multiple payment types
+
 ## Installation
 
 ```bash

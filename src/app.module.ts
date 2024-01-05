@@ -4,7 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DryerModule } from 'dryerjs';
 
-import { User } from './models/user';
+import models from './models';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { User } from './models/user';
       playground: true,
     }),
     MongooseModule.forRoot('mongodb://127.0.0.1:27017/cartos'),
-    DryerModule.register({ definitions: [User] }),
+    DryerModule.register({ definitions: models }),
   ],
 })
 export class AppModule {}
