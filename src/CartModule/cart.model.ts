@@ -1,4 +1,6 @@
 import { Definition, Property, Id, ObjectId, Embedded } from 'dryerjs';
+import Payment from '../PaymentModule/payment.model';
+import Shipment from '../ShipmentModule/shipment.model';
 
 @Definition()
 export class CartAddress {
@@ -97,6 +99,12 @@ export default class Cart {
 
   @Embedded(() => CartItem)
   items: CartItem[];
+
+  @Embedded(() => Payment)
+  payments: Payment[];
+
+  @Embedded(() => Shipment)
+  shipments: Shipment[];
 
   @Embedded(() => CartAddress)
   shippingAddress: CartAddress;
