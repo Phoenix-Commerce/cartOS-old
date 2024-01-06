@@ -16,8 +16,8 @@ export class CartService {
   ) {}
 
   // Find a cart by its ID
-  async findById(id: string): Promise<Cart> {
-    const cart = await this.cartModel.findById(id).exec();
+  async findById(id: string) {
+    const cart = await this.cartModel.findById(id);
     if (!cart) {
       throw new NotFoundException('Cart not found');
     }
@@ -25,8 +25,8 @@ export class CartService {
   }
 
   // Add a item to the cart
-  async addItemToCart(cartId: string, productId: string): Promise<Cart> {
-    const cart: Cart = await this.findById(cartId);
+  async addItemToCart(cartId: string, productId: string) {
+    const cart = await this.findById(cartId);
     const product = await this.productModel.findById(productId).exec();
     if (!product) {
       throw new NotFoundException('Product not found');
@@ -37,15 +37,15 @@ export class CartService {
   }
 
   // Remove a product from the cart
-  async removeProduct(cartId: string, productId: string): Promise<Cart> {
-    const cart: Cart = await this.findById(cartId);
-    cart.items = cart.items.filter(p => p !== productId);
+  async removeProduct(cartId: string, productId: string) {
+    const cart = await this.findById(cartId);
+    cart.items = cart.items.filter((p) => p.productId !== productId);
     return cart.save();
   }
 
   // Add a payment to the cart
-  async addPayment(cartId: string, paymentDto: any): Promise<Cart> {
-    const cart: Cart = await this.findById(cartId);
+  async addPayment(cartId: string, paymentDto: any) {
+    const cart = await this.findById(cartId);
     const newPayment = new this.paymentModel(paymentDto);
     await newPayment.save();
 
@@ -54,7 +54,7 @@ export class CartService {
   }
 
   // Add a shipment to the cart
-  async addShipment(cartId: string, shipmentDto: any): Promise<Cart> {
+  async addShipment(cartId: string, shipmentDto: any) {
     const cart = await this.findById(cartId);
     const newShipment = new this.shipmentModel(shipmentDto);
     await newShipment.save();
