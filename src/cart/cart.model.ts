@@ -1,54 +1,8 @@
 import { Definition, Property, Id, ObjectId, Embedded } from 'dryerjs';
 import Payment from '../payment/payment.model';
 import Shipment from '../fulfillment/shipment.model';
-
-@Definition()
-export class CartAddress {
-  @Id()
-  id: ObjectId;
-
-  @Property()
-  shopId: string;
-
-  @Property()
-  fullName: string;
-
-  @Property()
-  firstName: string;
-
-  @Property()
-  lastName: string;
-
-  @Property()
-  addressLine1: string;
-
-  @Property()
-  addressLine2: string;
-
-  @Property()
-  city: string;
-
-  @Property()
-  region: string;
-
-  @Property()
-  postalCode: string;
-
-  @Property()
-  country: string;
-
-  @Property()
-  phoneNumber: string;
-
-  @Property()
-  isCommercial: boolean;
-
-  @Property()
-  isBillingDefault: boolean;
-
-  @Property()
-  isShippingDefault: boolean;
-}
+import Shop from '../shop/shop.model';
+import Address from '../common/models/address.model';
 
 @Definition()
 export class ShippingMethod {
@@ -97,6 +51,9 @@ export default class Cart {
   @Property()
   userId: string;
 
+  @Embedded(() => Shop)
+  shop: Shop;
+
   @Embedded(() => CartItem)
   items: CartItem[];
 
@@ -106,11 +63,11 @@ export default class Cart {
   @Embedded(() => Shipment)
   shipments: Shipment[];
 
-  @Embedded(() => CartAddress)
-  shippingAddress: CartAddress;
+  @Embedded(() => Address)
+  shippingAddress: Address;
 
-  @Embedded(() => CartAddress)
-  billingAddress: CartAddress;
+  @Embedded(() => Address)
+  billingAddress: Address;
 
   @Embedded(() => ShippingMethod)
   shippingMethod: ShippingMethod;
