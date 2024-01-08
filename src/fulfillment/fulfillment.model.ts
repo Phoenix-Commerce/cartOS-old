@@ -1,7 +1,9 @@
 import { Definition, Property, Id, ObjectId } from 'dryerjs';
 
+
+
 @Definition()
-export default class Shipment {
+export default class Fulfillment {
   @Id()
   id: ObjectId;
 
