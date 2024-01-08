@@ -12,7 +12,7 @@ An eCommerce System built for the Modern Dedicated Stack focused on delivering p
 * Flexible checkout flows
 * No-cart checkout
 * Promotions
-* Multiple fulfuillment types
+* Multiple fulfillment types
 * Multiple payment types
 
 ## Installation

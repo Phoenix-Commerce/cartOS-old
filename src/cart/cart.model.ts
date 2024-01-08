@@ -1,6 +1,6 @@
 import { Definition, Property, Id, ObjectId, Embedded } from 'dryerjs';
-import Payment from '../PaymentModule/payment.model';
-import Shipment from '../ShipmentModule/shipment.model';
+import Payment from '../payment/payment.model';
+import Shipment from '../fulfillment/shipment.model';
 
 @Definition()
 export class CartAddress {

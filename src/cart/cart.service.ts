@@ -2,9 +2,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import Cart from './cart.model';
-import Product from '../ProductModule/product.model';
-import Payment from '../PaymentModule/payment.model';
-import Shipment from '../ShipmentModule/shipment.model';
+import Product from '../product/product.model';
+import Payment from '../payment/payment.model';
+import Shipment from '../fulfillment/shipment.model';
 
 @Injectable()
 export class CartService {
@@ -62,6 +62,4 @@ export class CartService {
     cart.shipments.push(newShipment);
     return cart.save();
   }
-
-  // Other methods like updating cart items, processing the checkout, etc.
 }

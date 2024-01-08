@@ -1,4 +1,5 @@
-import { Definition, Property, Id, ObjectId } from 'dryerjs';
+import { Definition, Property, Id, ObjectId, Embedded } from 'dryerjs';
+import Address from '../common/models/address.model';
 
 @Definition()
 export default class Shop {
@@ -11,26 +12,11 @@ export default class Shop {
   @Property()
   description: string;
 
-  @Property()
-  addressLine1: string;
+  @Embedded(() => Address)
+  billAddress: Address;
 
-  @Property()
-  addressLine2: string;
-
-  @Property()
-  city: string;
-
-  @Property()
-  region: string;
-
-  @Property()
-  postalCode: string;
-
-  @Property()
-  country: string;
-
-  @Property()
-  phoneNumber: string;
+  @Embedded(() => Address)
+  shipAddress: Address;
 
   @Property()
   email: string;
@@ -49,4 +35,10 @@ export default class Shop {
 
   @Property()
   isDefault: boolean;
+
+  @Property()
+  createdAt: Date;
+
+  @Property()
+  updatedAt: Date;
 }
