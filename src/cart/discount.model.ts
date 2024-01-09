@@ -1,19 +1,19 @@
 import { Definition, Property, Id, ObjectId } from 'dryerjs';
 
 @Definition()
-export default class Customer {
+export default class Discount {
   @Id()
   id: ObjectId;
 
   @Property()
-  email: string;
+  discountType: string; // percentage or flat
 
   @Property()
-  firstName: string;
+  discountAmount: number;
 
   @Property()
-  lastName: string;
+  dateCreated: Date;
 
   @Property()
-  phoneNumber: string;
+  dateUpdated: Date;
 }

@@ -1,5 +1,25 @@
 import { Definition, Property, Id, ObjectId, Embedded } from 'dryerjs';
-import { CartItem } from './cart';
+
+@Definition()
+export class OrderItem {
+  @Id()
+  id: ObjectId;
+
+  @Property()
+  productId: string;
+
+  @Property()
+  name: string;
+
+  @Property()
+  description: string;
+
+  @Property()
+  price: number;
+
+  @Property()
+  quantity: number;
+}
 
 @Definition()
 export default class Order {
@@ -12,8 +32,8 @@ export default class Order {
   @Property()
   customerId: string;
 
-  @Embedded(() => CartItem)
-  items: CartItem[];
+  @Embedded(() => OrderItem)
+  items: OrderItem[];
 
   @Property()
   total: number;
