@@ -7,6 +7,8 @@ CartOS - A Cart-Only eCommerce System build on NestJS, Mongo, Kafka, and DryerJS
 An eCommerce System built for the Modern Commerce Stack focused
 on delivering powerful and flexible checkout and order capabilities and easy integration with other systems. Designed to work "out of the box" for most people.
 
+## Roadmap (features planned but not completed)
+
 ## Core Features
 * "Big Microservice" architecture
 * Multi-shop/tenant with product sharing
@@ -43,6 +45,9 @@ on delivering powerful and flexible checkout and order capabilities and easy int
 * Extensive Logging and Alerting
 * Full test coverage
 * Dockerized
+
+## Features actually implemented
+* None yet
 
 
 ## Installation

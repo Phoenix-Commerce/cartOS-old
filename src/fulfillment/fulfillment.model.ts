@@ -1,6 +1,22 @@
 import { Definition, Property, Id, ObjectId } from 'dryerjs';
 
+@Definition()
+export class FulfillmentType {
+  @Id()
+  id: ObjectId;
 
+  @Property()
+  name: string;
+
+  @Property()
+  description: string;
+
+  @Property()
+  createdAt: Date;
+
+  @Property()
+  updatedAt: Date;
+}
 
 @Definition()
 export default class Fulfillment {
@@ -20,8 +36,8 @@ export default class Fulfillment {
   status: string;
 
   @Property()
-  dateCreated: Date;
+  createdAt: Date;
 
   @Property()
-  dateUpdated: Date;
+  updatedAt: Date;
 }

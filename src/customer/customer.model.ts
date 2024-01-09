@@ -22,8 +22,8 @@ export default class Customer {
   phoneNumber: string;
 
   @Embedded(() => Address)
-  billingAddress: Address;
+  billingAddresses: Address[];
 
   @Embedded(() => Address)
-  shippingAddress: Address;
+  shippingAddresses: Address[];
 }

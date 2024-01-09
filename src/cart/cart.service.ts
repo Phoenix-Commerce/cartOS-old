@@ -4,7 +4,6 @@ import { Model } from 'mongoose';
 import Cart from './cart.model';
 import Product from '../product/product.model';
 import Payment from '../payment/payment.model';
-import Shipment from '../fulfillment/shipment.model';
 
 @Injectable()
 export class CartService {
@@ -12,7 +11,6 @@ export class CartService {
     @InjectModel('Cart') private readonly cartModel: Model<Cart>,
     @InjectModel('Product') private readonly productModel: Model<Product>,
     @InjectModel('Payment') private readonly paymentModel: Model<Payment>,
-    @InjectModel('Shipment') private readonly shipmentModel: Model<Shipment>,
   ) {}
 
   // Find a cart by its ID
@@ -36,13 +34,6 @@ export class CartService {
     return cart.save();
   }
 
-  // Remove a product from the cart
-  async removeProduct(cartId: string, productId: string) {
-    const cart = await this.findById(cartId);
-    cart.items = cart.items.filter((p) => p.productId !== productId);
-    return cart.save();
-  }
-
   // Add a payment to the cart
   async addPayment(cartId: string, paymentDto: any) {
     const cart = await this.findById(cartId);
@@ -50,16 +41,6 @@ export class CartService {
     await newPayment.save();
 
     cart.payments.push(newPayment);
-    return cart.save();
-  }
-
-  // Add a shipment to the cart
-  async addShipment(cartId: string, shipmentDto: any) {
-    const cart = await this.findById(cartId);
-    const newShipment = new this.shipmentModel(shipmentDto);
-    await newShipment.save();
-
-    cart.shipments.push(newShipment);
     return cart.save();
   }
 }
