@@ -10,7 +10,7 @@ export default class User {
   shops: Shop[];
 
   @Property()
-  userType: string; // either login or API
+  userType: string; // either login anonymous or API
 
   @Property()
   email: string;

@@ -3,18 +3,22 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MongooseModule } from '@nestjs/mongoose';
 import { DryerModule } from 'dryerjs';
+import { env } from './config';
 
 import models from './models';
+import services from './services';
 
 @Module({
   imports: [
+    ...models,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
       playground: true,
     }),
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/cartos'),
+    MongooseModule.forRoot(env.MONGO_URL),
     DryerModule.register({ definitions: models }),
   ],
+  providers: [...services],
 })
 export class AppModule {}
